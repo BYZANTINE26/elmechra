@@ -1,0 +1,40 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.hero-section {
+    background: url('https://images.pexels.com/photos/220749/pexels-photo-220749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 100px 0;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.hero-section h1 {
+    font-weight: 700;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #ffc107 !important;
+}
+
+.btn-primary {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+#services ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#services ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
