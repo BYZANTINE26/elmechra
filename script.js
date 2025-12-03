@@ -7,7 +7,7 @@ if (navToggle && nav) {
     navToggle.setAttribute('aria-expanded', String(!expanded));
     nav.setAttribute('aria-hidden', String(expanded));
     if (!expanded) {
-      nav.style.height = '280px';
+      nav.style.height = '320px';
     } else {
       nav.style.height = '0';
     }
@@ -15,6 +15,27 @@ if (navToggle && nav) {
   // Start hidden for a11y
   nav.setAttribute('aria-hidden', 'true');
 }
+
+// Product tabs
+const productTabs = document.querySelectorAll('.product-tab');
+const productContents = document.querySelectorAll('.product-content');
+
+productTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const targetTab = tab.getAttribute('data-tab');
+
+    // Remove active class from all tabs and contents
+    productTabs.forEach(t => t.classList.remove('active'));
+    productContents.forEach(c => c.classList.remove('active'));
+
+    // Add active class to clicked tab and corresponding content
+    tab.classList.add('active');
+    const targetContent = document.getElementById(targetTab);
+    if (targetContent) {
+      targetContent.classList.add('active');
+    }
+  });
+});
 
 // Scroll reveal
 const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
