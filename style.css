@@ -89,19 +89,20 @@
     transform: translateY(-2px); 
     box-shadow: var(--shadow-lg);
     background: var(--gray-900);
+    color: var(--primary);
   }
   
   .btn:active { transform: translateY(0); }
   
   .btn-outline {
-    background: var(--bg);
-    color: var(--black);
+    background: var(--black);
+    color: var(--bg);
     border-color: var(--black);
   }
   
   .btn-outline:hover {
-    background: var(--black);
-    color: var(--bg);
+    background: var(--gray-900);
+    color: var(--primary);
   }
   
   .btn-lg { padding: 1.15rem 2rem; font-size: 1.05rem; }
@@ -164,7 +165,13 @@
   }
   
   .nav a:hover { color: var(--primary-dark); }
-  .nav .btn { margin-left: .5rem; }
+  .nav .btn { 
+    margin-left: .5rem; 
+    color: var(--bg);
+  }
+  .nav .btn:hover { 
+    color: var(--primary);
+  }
   
   .nav-toggle {
     display: none;
@@ -196,19 +203,24 @@
       background: rgba(255,255,255,.98); 
       border-bottom: 1px solid var(--border); 
       padding: 0 var(--s-5); 
-      gap: 1.5rem; 
+      padding-top: 2px !important;
+      gap: 1rem; 
       flex-direction: column; 
       align-items: flex-start; 
       transition: height .3s ease, padding .3s ease; 
     }
     
     .nav[aria-hidden="false"] { 
-      height: 320px; 
+      height: 270px !important; 
       padding-top: var(--s-5); 
       padding-bottom: var(--s-5);
     }
     
     .nav-toggle { display: flex; }
+
+    .nav-list-item {
+      margin-left: 20px;
+    }
   }
   
   /* Hero */
@@ -218,6 +230,25 @@
     min-height: 600px;
     display: flex;
     align-items: center;
+  }
+
+  /* Page Hero (for interior pages) */
+  .page-hero {
+    background: var(--black);
+    color: white;
+    padding: var(--s-8) 0;
+    text-align: center;
+  }
+
+  .page-hero h1 {
+    color: white;
+    margin-bottom: var(--s-4);
+  }
+
+  .page-hero .lead {
+    margin: 0 auto;
+    max-width: 800px;
+    color: rgba(255, 255, 255, 0.85);
   }
   
   .hero-media { 
@@ -321,6 +352,31 @@
     font-size: 1rem;
     line-height: 1.5;
   }
+
+  .img-wrap {
+    display: inline-block;      /* shrink to image size, easy to center later */
+    position: relative;
+    left: -15px;
+  }
+
+  .img-base,
+  .img-top {
+    display: block;
+    /* max-width: 100%;
+    height: auto; */
+    width: 64px;
+    height: 64px;
+  }
+
+  .img-top {
+    position: absolute;
+    inset: 0;                   /* fill the same box as base */
+    transform: translate(75%, -3%); /* overlap by percentages, responsive */
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+
   
   /* Sections */
   .section { 
@@ -371,6 +427,8 @@
     padding: var(--s-6); 
     box-shadow: var(--shadow-sm);
     transition: all .3s ease;
+    display: flex;
+    flex-direction: column;
   }
   
   .solution-card:hover {
@@ -392,6 +450,12 @@
   .solution-card p {
     color: var(--text-light);
     line-height: 1.7;
+    flex-grow: 1;
+  }
+  
+  .solution-card .btn {
+    margin-top: var(--s-4);
+    align-self: flex-start;
   }
   
   /* Crane Types */
@@ -1153,6 +1217,8 @@
     
     .footer-grid { 
       grid-template-columns: 1fr 1fr; 
+      padding-top: 20px;
+      padding-left: 20px;
     }
     
     .footer-grid > div:first-child {
@@ -1184,6 +1250,7 @@
     
     .hero-cta {
       flex-direction: column;
+      align-items: center;
     }
     
     .hero-cta .btn {
@@ -1222,6 +1289,41 @@
     .process-steps {
       grid-template-columns: 1fr;
     }
+
+    .site-footer{
+      padding-top: 10px;
+    }
+  }
+  
+  /* Contact form select styling — match inputs */
+  .contact select,
+  form select {
+    width: 100%;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: .9rem 1rem;
+    font: inherit;
+    background: var(--bg);
+    color: var(--black);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all .2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Use a single inline SVG chevron to avoid a gap between triangles */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 2l5 4 5-4' stroke='%230F0F0F' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 12px 8px;
+    padding-right: 2.4rem;
+  }
+
+  .contact select:focus,
+  form select:focus {
+    outline: none;
+    border-color: var(--black);
+    box-shadow: 0 0 0 4px rgba(15,15,15,.05);
   }
   
   /* Accessibility: reduced motion */
@@ -1230,3 +1332,131 @@
     .reveal, .reveal.in { transition: none !important; }
     * { transition: none !important; animation: none !important; }
   }
+
+/* Container for the entire carousel */
+.multi-carousel-container {
+  cursor: grab;
+  margin: 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Cursor styles for dragging */
+.multi-carousel-container.dragging,
+#multiCarousel.dragging {
+  cursor: grabbing;
+}
+
+/* Wrapper for all slides */
+.multi-carousel-inner {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Individual slide */
+.multi-carousel-item,
+.clone {
+  box-sizing: border-box;
+  flex: 0 0 33.333333%;
+  padding: 0 5px;
+  position: relative; /* Essential for item-number positioning */
+}
+
+/* Control buttons */
+.multi-carousel-control-prev,
+.multi-carousel-control-next {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  position: absolute;
+  text-decoration: none;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+  width: 40px;
+  z-index: 10;
+}
+
+.multi-carousel-control-prev:hover,
+.multi-carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.multi-carousel-control-prev {
+  left: 10px;
+}
+
+.multi-carousel-control-next {
+  right: 10px;
+}
+
+/* Image container with dynamic height */
+.img-container {
+  border-radius: 1.5rem;
+  height: var(--carousel-height, 80vh);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image styling */
+.img-container img,
+#carouselInner img {
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  pointer-events: none;
+  /* user-drag: none; */
+  width: 100%;
+  -webkit-user-drag: none;
+  transition: transform 0.3s ease;
+}
+
+.img-container:hover img {
+  transform: translateZ(0) scale(1.02);
+}
+
+/* Item number styling - guaranteed visibility */
+.item-number {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  display: inline-flex;
+  font-size: 120%;
+  font-weight: bold;
+  height: 35px;
+  justify-content: center;
+  left: 1rem;
+  position: absolute;
+  top: 1rem;
+  width: 35px;
+  z-index: 2; /* Higher than default but below controls */
+  /* Isolation prevents z-index context issues */
+  isolation: isolate;
+}
+
+/* Carousel cursor styling */
+#multiCarousel {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+/* Disable text selection during drag */
+#multiCarousel.dragging {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Responsive adjustments for screens smaller than 720px (45em) */
+@media (max-width: 45em) {
+  .multi-carousel-item,
+  .clone {
+    flex: 0 0 100%;
+  }
+}

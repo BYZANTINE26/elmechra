@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crane Hook Scroll Demo</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 200vh;          /* enough page height to scroll [web:25] */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background: #ffffff;
+      font-family: system-ui, sans-serif;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    #crane {
+      display: block;
+      margin-top: 40px;
+      max-width: 500px;
+      width: 80vw;
+    }
+
+    /* ensure transforms on the hook behave predictably for SVG */
+    #hook {
+      transform-box: fill-box;
+      transform-origin: center top;
+    }
+
+    .spacer {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scroll down to lower the hook</h1>
+
+  <!-- SIMPLE PLACEHOLDER SVG: swap this whole <svg> with your exported crane SVG.
+       Make sure the hook + rope group has id="hook". -->
+  <img id="crane" src="crane.svg" alt="Crane with movable hook">
+
+  <div class="spacer"></div>
+
+  <script>
+    const hook = document.getElementById('hook');
+    const maxDrop = 80; // how many SVG units the hook should move down
+
+    function updateHook() {
+      const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollMax === 0 ? 0 : window.scrollY / scrollMax; // 0–1
+      const drop = progress * maxDrop;
+      hook.style.transform = `translateY(${drop}px)`;
+    }
+
+    window.addEventListener('scroll', updateHook, { passive: true });
+    updateHook();
+  </script>
+  <iframe class="map-top"
+    width="598"
+    height="450"
+    src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyDqvReKDQVUokQ3CH9PJTDUwtMF6bAmjbM
+    &origin=Oslo+Norway&destination=Telemark+Norway&avoid=tolls|highways" allowfullscreen></iframe>
+</body>
+</html>
+
+
+
+src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDqvReKDQVUokQ3CH9PJTDUwtMF6bAmjbM&q=89P3%2B83M,+IMT+Main+Rd,+Sector+70,+Faridabad,+Haryana+121004,+India"
