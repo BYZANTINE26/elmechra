@@ -1211,10 +1211,6 @@
       grid-template-columns: 1fr; 
     }
     
-    .about-media {
-      order: -1;
-    }
-    
     .footer-grid { 
       grid-template-columns: 1fr 1fr; 
       padding-top: 20px;
@@ -1333,130 +1329,151 @@
     * { transition: none !important; animation: none !important; }
   }
 
-/* Container for the entire carousel */
-.multi-carousel-container {
-  cursor: grab;
-  margin: 0 auto;
-  max-width: 100%;
-  overflow: hidden;
-  position: relative;
-}
+  /* Container for the entire carousel */
+  .multi-carousel-container {
+    cursor: grab;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
 
-/* Cursor styles for dragging */
-.multi-carousel-container.dragging,
-#multiCarousel.dragging {
-  cursor: grabbing;
-}
+  /* Cursor styles for dragging */
+  .multi-carousel-container.dragging,
+  #multiCarousel.dragging {
+    cursor: grabbing;
+  }
 
-/* Wrapper for all slides */
-.multi-carousel-inner {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+  /* Wrapper for all slides */
+  .multi-carousel-inner {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 
-/* Individual slide */
-.multi-carousel-item,
-.clone {
-  box-sizing: border-box;
-  flex: 0 0 33.333333%;
-  padding: 0 5px;
-  position: relative; /* Essential for item-number positioning */
-}
-
-/* Control buttons */
-.multi-carousel-control-prev,
-.multi-carousel-control-next {
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  position: absolute;
-  text-decoration: none;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: background-color 0.3s ease;
-  width: 40px;
-  z-index: 10;
-}
-
-.multi-carousel-control-prev:hover,
-.multi-carousel-control-next:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.multi-carousel-control-prev {
-  left: 10px;
-}
-
-.multi-carousel-control-next {
-  right: 10px;
-}
-
-/* Image container with dynamic height */
-.img-container {
-  border-radius: 1.5rem;
-  height: var(--carousel-height, 80vh);
-  overflow: hidden;
-  position: relative;
-}
-
-/* Image styling */
-.img-container img,
-#carouselInner img {
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  pointer-events: none;
-  /* user-drag: none; */
-  width: 100%;
-  -webkit-user-drag: none;
-  transition: transform 0.3s ease;
-}
-
-.img-container:hover img {
-  transform: translateZ(0) scale(1.02);
-}
-
-/* Item number styling - guaranteed visibility */
-.item-number {
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 50%;
-  display: inline-flex;
-  font-size: 120%;
-  font-weight: bold;
-  height: 35px;
-  justify-content: center;
-  left: 1rem;
-  position: absolute;
-  top: 1rem;
-  width: 35px;
-  z-index: 2; /* Higher than default but below controls */
-  /* Isolation prevents z-index context issues */
-  isolation: isolate;
-}
-
-/* Carousel cursor styling */
-#multiCarousel {
-  cursor: grab;
-  touch-action: pan-y;
-}
-
-/* Disable text selection during drag */
-#multiCarousel.dragging {
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Responsive adjustments for screens smaller than 720px (45em) */
-@media (max-width: 45em) {
+  /* Individual slide */
   .multi-carousel-item,
   .clone {
-    flex: 0 0 100%;
+    box-sizing: border-box;
+    flex: 0 0 33.333333%;
+    padding: 0 5px;
+    position: relative; /* Essential for item-number positioning */
   }
-}
+
+  /* Control buttons */
+  .multi-carousel-control-prev,
+  .multi-carousel-control-next {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    position: absolute;
+    text-decoration: none;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
+    width: 40px;
+    z-index: 10;
+  }
+
+  .multi-carousel-control-prev:hover,
+  .multi-carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .multi-carousel-control-prev {
+    left: 10px;
+  }
+
+  .multi-carousel-control-next {
+    right: 10px;
+  }
+
+  /* Image container with dynamic height */
+  .img-container {
+    border-radius: 1.5rem;
+    height: var(--carousel-height, 80vh);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Image styling */
+  .img-container img,
+  #carouselInner img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    pointer-events: none;
+    /* user-drag: none; */
+    width: 100%;
+    -webkit-user-drag: none;
+    transition: transform 0.3s ease;
+  }
+
+  .img-container:hover img {
+    transform: translateZ(0) scale(1.02);
+  }
+
+  /* Item number styling - guaranteed visibility */
+  .item-number {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 50%;
+    display: inline-flex;
+    font-size: 120%;
+    font-weight: bold;
+    height: 35px;
+    justify-content: center;
+    left: 1rem;
+    position: absolute;
+    top: 1rem;
+    width: 35px;
+    z-index: 2; /* Higher than default but below controls */
+    /* Isolation prevents z-index context issues */
+    isolation: isolate;
+  }
+
+  /* Carousel cursor styling */
+  #multiCarousel {
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  /* Disable text selection during drag */
+  #multiCarousel.dragging {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Responsive adjustments for screens smaller than 720px (45em) */
+  @media (max-width: 45em) {
+    .multi-carousel-item,
+    .clone {
+      flex: 0 0 100%;
+    }
+  }
+
+
+  .carousel-control-next-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+  }
+
+  .carousel-control-prev-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+  }

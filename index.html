@@ -10,6 +10,22 @@
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    @media (max-width: 1100px) {
+      .footer-grid {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-grid>div:nth-child(2) {
+        order: 2;
+      }
+
+      .footer-grid>div:nth-child(3) {
+        order: 1;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -41,8 +57,8 @@
   <!-- Hero -->
   <section class="hero" style="padding-top: 10px; padding-bottom: 10px;">
     <div class="hero-media" aria-hidden="true">
-      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1920&auto=format&fit=crop" alt=""
-        loading="eager" />
+      <!-- <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1920&auto=format&fit=crop" alt="" loading="eager" /> -->
+      <img src="images/background/bg_3.jpg" alt="">
       <div class="hero-overlay"></div>
     </div>
     <div class="container hero-content">
@@ -216,10 +232,11 @@
         </div>
         <div class="crane-type reveal">
           <div class="crane-type-icon">
-            <div class="img-wrap">
+            <!-- <div class="img-wrap">
               <img src="images/icon/shaft_512.png" class="img-base">
               <img src="images/icon/elevator_512.png" class="img-top">
-            </div>
+            </div> -->
+            <img src="images/icon/passenger-hoist-icon.svg" alt="Passenger hoist icon" />
           </div>
           <h3>Passenger Hoists</h3>
           <p>Safe and smooth operation</p>
